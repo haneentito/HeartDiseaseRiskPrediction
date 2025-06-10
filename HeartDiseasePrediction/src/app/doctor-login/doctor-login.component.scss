@@ -1,0 +1,96 @@
+.flex {
+  display: flex;
+}
+.h-screen {
+  height: 100vh;
+}
+.bg-cover {
+  background-size: cover;
+}
+.bg-center {
+  background-position: center;
+}
+.bg-gray-100 {
+  background-color: #bebebe;
+}
+
+
+.text-red-600 {
+  color: #dc2626;
+}
+.hover\:bg-gray-200:hover {
+  background-color: #e5e5e5;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+.focus\:ring-2:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.paddinglogin{
+  margin-left: 190px;
+}
+.paddingloginpass{
+  margin-left: 425px;
+  margin-bottom: 30px;
+}
+.fpmargin{
+  margin-left: 70px
+}
+
+.padingloginbtn{
+  margin-left: 80px;
+  margin-top: 10px;
+}
+input {
+  font-size: 0.875rem; /* Matches the photo */
+  font-family: 'Poppins', sans-serif;
+  background-color: #bebebe;
+  border-radius: 45px;
+  padding: 12px 15px;
+  border: none;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+button{
+  border-radius: 35px;
+}
+input:focus {
+  outline: #005a61;
+  background-color: #e6f5f5;
+  box-shadow: 0 0 10px rgba(0, 109, 119, 0.4);
+}
+button:hover {
+  background-color: #005a61;
+  transition: background-color 0.3s ease-in-out;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+input:hover,
+input:focus {
+  background-color: #e6f5f5;
+  box-shadow: 0 0 10px rgba(0, 109, 119, 0.5);
+}
+button:hover {
+  background-color: #005a61;
+  transition: background-color 0.3s ease;
+}
+.userlogin{
+
+border: 5px solid #6b6b6b;
+}
+h2{
+
+  font-size: 2rem ;
+  font-weight: 400px;
+  color: rgb(116, 116, 116);
+}
+
+.pinpuut{
+  margin-left: 20px;
+}

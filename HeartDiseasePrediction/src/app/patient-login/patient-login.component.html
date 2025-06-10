@@ -1,0 +1,56 @@
+<div class="flex h-screen">
+  <!-- Left Section-->
+  <div class="w-2/3 bg-cover bg-center" style="background-image: url('../../assets/images/LoginBackground.jpg');">
+  </div>
+
+  <!-- Right Section-->
+  <div class="logincontainer w-1/2 flex flex-col justify-center items-center bg-[#a6d4d3] px-6">
+    <!-- User Icon -->
+    <div class="userlogin flex justify-center items-center w-16 h-16 rounded-full mb-6">
+      <i class="fa-regular fa-user fa-2xl" style="color: #005a61;"></i>
+    </div>
+
+    <!-- Login Form -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <h2 class="text-xl font-bold mb-6 pb-5 ml-12">Login To Your Account</h2>
+
+      <!-- Email -->
+      <div class="flex items-center mb-4">
+        <i class="fas fa-envelope text-[#005a61] text-xl mr-4"></i>
+        <input
+          type="email"
+          id="email"
+          placeholder="Email"
+          formControlName="email"
+          class="w-full bg-gray-100 py-3 px-4 rounded-lg focus:ring-4 focus:ring-[#006D77] focus:outline-none hover:bg-gray-200 transition"/>
+      </div>
+      <small *ngIf="getError('email')" class="fpmargin text-danger font-bold">{{ getError('email') }}</small>
+
+      <!-- Password -->
+      <div class="flex items-center mb-4">
+        <i class="fa-regular fa-eye-slash fa-2xl mr-4" style="color: #005a61;"></i>
+        <input
+          type="password"
+          placeholder="Password"
+          id="password"
+          formControlName="password"
+          class="w-full bg-gray-100 py-3 px-4 rounded-lg focus:ring-4 focus:ring-[#006D77] focus:outline-none hover:bg-gray-200 transition"/>
+      </div>
+      <small *ngIf="getError('password')" class="fpmargin text-danger font-bold">{{ getError('password') }}</small>
+
+      <br>
+      <!-- Forgot Password -->
+      <a [routerLink]="['/forget-password']" [queryParams]="{ userType: 'patient' }" class="paddingloginpass text-[#a73939] font-bold text-sm mb-6 self-end hover:underline">Forget Password?</a>
+
+      <!-- Login -->
+      <button type="submit" class="w-100 mt-3 bg-[#006D77] text-white py-3 rounded-lg text-lg hover:bg-[#015158] transition">
+        Login
+      </button>
+
+      <!-- Register -->
+      <p class="paddinglogin text-sm mt-4">
+        Don’t Have Account? <a href="#" class="text-[#a73939] font-bold hover:underline" routerLink="/patient-registration">Register</a>
+      </p>
+    </form>
+  </div>
+</div>

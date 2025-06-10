@@ -1,0 +1,58 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+</style>
+<div class="home-container">
+  <!-- Navbar -->
+  <div class="background">
+    <nav class="navbar m-auto">
+      <div class="logo ml-6 pl-8">
+        <img src="../../assets/images/NavbarVector.png" alt="Heart Care Logo">
+        <span class="heartcare">Heart Care</span>
+      </div>
+      <ul class="nav-links navfonts">
+        <li><a href="#" routerLink="/doctor-home" class="active mr-6 pr-3">Home</a></li>
+        <li><a href="#" routerLink="/doctor-home-profile" class="mr-6 pr-3">Profile</a></li>
+        <li><a href="#" routerLink="/doctor-home-appointments" class="mr-6 pr-3">My Appointments</a></li>
+        <li class="relative mr-6 pr-3">
+          <a href="#" (click)="toggleNotifications($event)" class="flex items-center hover:underline">
+            <svg class="w-5 h-5 mr-1" fill="none" style="color: rgb(141, 35, 35);" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+            </svg>
+            Alerts
+            <span *ngIf="notifications.length > 0" class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+              {{ notifications.length }}
+            </span>
+          </a>
+          <div *ngIf="showNotifications" class="notification-dropdown absolute right-0 mt-2 w-64 bg-gray-900 text-white rounded-lg shadow-lg p-4 z-50" (click)="$event.stopPropagation()">
+            <h4 class="text-sm font-semibold mb-2" style="color: teal;">Notifications:</h4>
+            <div *ngIf="notifications.length === 0" class="text-sm">No Notifications Found ❌</div>
+            <div *ngFor="let notification of notifications" class="text-sm mb-2">
+              {{ notification.message }}
+              <div class="flex space-x-2 mt-1">
+                <button (click)="acceptAppointment(notification.appointment_id); $event.stopPropagation()" class="text-green-400 hover:underline">Confirm</button>
+                <button (click)="declineAppointment(notification.appointment_id); $event.stopPropagation()" class="text-red-400 hover:underline">Decline</button>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="#" (click)="logout(); $event.preventDefault()" class="mr-6 pr-3">Log Out</a></li>
+      </ul>
+    </nav>
+    <div class="overlay"></div>
+  </div>
+
+  <!-- Content Section -->
+  <div class="home-container homema">
+    <div class="heart-logo item1 ml-6">
+      <img src="../../assets/images/HeartHomePa.png" class="heart-logo" alt="Heart Logo">
+    </div>
+    <div class="text-section item2">
+      <h1 class="head-home">Healing hearts, improving lives</h1>
+      <p class="p-home">Your cardiac care is our top priority.</p>
+      <a routerLink="/contact" class="contact-btn">Contact us</a>
+    </div>
+    <div class="semi-rectangle item3">
+      <img src="../../assets/images/semiRectangle2.png" class="semi-rectangle" alt="Semi Rectangle">
+    </div>
+  </div>
+</div>

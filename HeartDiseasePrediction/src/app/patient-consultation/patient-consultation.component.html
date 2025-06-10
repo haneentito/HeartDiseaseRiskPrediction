@@ -1,0 +1,27 @@
+<div class="consultation-container">
+  <h1 class="text-2xl font-bold text-center mb-6">Best Cardiologist Doctors in Cairo, Egypt</h1>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div *ngFor="let doctor of doctors" class="doctor-card bg-white p-4 rounded-lg shadow-md">
+      <div class="flex items-center mb-2">
+        <div class="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center mr-2">
+          <svg class="w-5 h-5 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+          </svg>
+        </div>
+        <h2 class="text-lg font-semibold">{{ doctor.name }}</h2>
+      </div>
+      <div class="flex items-center mb-2">
+        <span *ngFor="let star of [1, 2, 3, 4, 5]" 
+              class="cursor-pointer" 
+              [ngClass]="star <= getStarCount(doctor.rating) ? 'text-yellow-400' : 'text-gray-300'" 
+              (click)="rateDoctor(doctor.id, star)">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+          </svg>
+        </span>
+      </div>
+      <a [routerLink]="['/doctor-profile-consultation', doctor.id]" class="mt-2 inline-block bg-teal-500 text-white py-2 px-4 rounded hover:bg-teal-600 transition-colors">View Profile</a>
+    </div>
+  </div>
+  <div *ngIf="errorMessage" class="text-red-600 text-center mt-4">{{ errorMessage }}</div>
+</div>

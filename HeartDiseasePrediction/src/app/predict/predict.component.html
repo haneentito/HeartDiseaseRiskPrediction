@@ -1,0 +1,161 @@
+<div class="predict-container min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
+  <div class="heartbeat-bg absolute inset-0 z-0"></div>
+
+  <div class="predict-card bg-white bg-opacity-10 backdrop-blur-lg rounded-2xl shadow-2xl w-full max-w-2xl p-8 relative z-10">
+    <div class="flex items-center justify-center mb-6">
+      <svg class="w-8 h-8 text-red-500 mr-2 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+      </svg>
+      <h2 class="text-3xl font-bold text-white">Heart Disease Predictor</h2>
+    </div>
+
+    <form [formGroup]="predictForm" (ngSubmit)="predictHeartDisease()" class="space-y-6">
+      <!-- Patient Information Section -->
+      <div class="section-border pb-4">
+        <h3 class="text-lg font-semibold text-teal-200 mb-4">Patient Information</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="age" class="block text-sm font-medium text-teal-100">Age</label>
+            <input type="number" id="age" formControlName="age" class="input-glow mt-1 block w-full rounded-lg shadow-sm" placeholder="e.g., 45">
+            <span *ngIf="isInvalid('age')" class="text-red-400 text-xs mt-1">Age is required</span>
+          </div>
+          <div>
+            <label for="sex" class="block text-sm font-medium text-teal-100">Sex</label>
+            <select id="sex" formControlName="sex" class="input-glow mt-1 block w-full rounded-lg shadow-sm">
+              <option value="" disabled>Select Sex</option>
+              <option value="0">Female 🙍🏻‍♀️</option>
+              <option value="1">Male 🙍🏻‍♂️</option>
+            </select>
+            <span *ngIf="isInvalid('sex')" class="text-red-400 text-xs mt-1">Sex is required</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Clinical Measurements Section -->
+      <div class="section-border pb-4">
+        <h3 class="text-lg font-semibold text-teal-200 mb-4">Clinical Measurements</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="chestPainType" class="block text-sm font-medium text-teal-100">Chest Pain Type</label>
+            <select id="chestPainType" formControlName="chestPainType" class="input-glow mt-1 block w-full rounded-lg shadow-sm">
+              <option value="" disabled>Select Type</option>
+              <option value="0">Typical Angina</option>
+              <option value="1">Atypical Angina</option>
+              <option value="2">Non-Anginal Pain</option>
+              <option value="3">Asymptomatic</option>
+            </select>
+            <span *ngIf="isInvalid('chestPainType')" class="text-red-400 text-xs mt-1">Chest Pain Type is required</span>
+          </div>
+          <div>
+            <label for="restingBP" class="block text-sm font-medium text-teal-100">Resting Blood Pressure (mmHg)</label>
+            <input type="number" id="restingBP" formControlName="restingBP" class="input-glow mt-1 block w-full rounded-lg shadow-sm" placeholder="e.g., 130">
+            <span *ngIf="isInvalid('restingBP')" class="text-red-400 text-xs mt-1">Resting BP is required</span>
+          </div>
+          <div>
+            <label for="cholestoral" class="block text-sm font-medium text-teal-100">Serum Cholestoral (mg/dl)</label>
+            <input type="number" id="cholestoral" formControlName="cholestoral" class="input-glow mt-1 block w-full rounded-lg shadow-sm" placeholder="e.g., 250">
+            <span *ngIf="isInvalid('cholestoral')" class="text-red-400 text-xs mt-1">Cholestoral is required</span>
+          </div>
+          <div>
+            <label for="fastingBS" class="block text-sm font-medium text-teal-100">Fasting Blood Sugar > 120 mg/dl</label>
+            <select id="fastingBS" formControlName="fastingBS" class="input-glow mt-1 block w-full rounded-lg shadow-sm">
+              <option value="" disabled>Select</option>
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+            <span *ngIf="isInvalid('fastingBS')" class="text-red-400 text-xs mt-1">Fasting BS is required</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ECG and Heart Rate Section -->
+      <div class="section-border pb-4">
+        <h3 class="text-lg font-semibold text-teal-200 mb-4">ECG and Heart Rate</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="restingECG" class="block text-sm font-medium text-teal-100">Resting ECG Results</label>
+            <select id="restingECG" formControlName="restingECG" class="input-glow mt-1 block w-full rounded-lg shadow-sm">
+              <option value="" disabled>Select</option>
+              <option value="0">Normal</option>
+              <option value="1">ST-T Wave Abnormality</option>
+              <option value="2">Left Ventricular Hypertrophy</option>
+            </select>
+            <span *ngIf="isInvalid('restingECG')" class="text-red-400 text-xs mt-1">Resting ECG is required</span>
+          </div>
+          <div>
+            <label for="maxHeartRate" class="block text-sm font-medium text-teal-100">Maximum Heart Rate Achieved</label>
+            <input type="number" id="maxHeartRate" formControlName="maxHeartRate" class="input-glow mt-1 block w-full rounded-lg shadow-sm" placeholder="e.g., 150">
+            <span *ngIf="isInvalid('maxHeartRate')" class="text-red-400 text-xs mt-1">Max Heart Rate is required</span>
+          </div>
+          <div>
+            <label for="exerciseAngina" class="block text-sm font-medium text-teal-100">Exercise Induced Angina</label>
+            <select id="exerciseAngina" formControlName="exerciseAngina" class="input-glow mt-1 block w-full rounded-lg shadow-sm">
+              <option value="" disabled>Select</option>
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+            <span *ngIf="isInvalid('exerciseAngina')" class="text-red-400 text-xs mt-1">Exercise Angina is required</span>
+          </div>
+          <div>
+            <label for="oldpeak" class="block text-sm font-medium text-teal-100">Oldpeak (ST Depression)</label>
+            <input type="number" step="0.1" id="oldpeak" formControlName="oldpeak" class="input-glow mt-1 block w-full rounded-lg shadow-sm" placeholder="e.g., 2.3">
+            <span *ngIf="isInvalid('oldpeak')" class="text-red-400 text-xs mt-1">Oldpeak is required</span>
+          </div>
+          <div>
+            <label for="slope" class="block text-sm font-medium text-teal-100">Slope of Peak Exercise ST Segment</label>
+            <select id="slope" formControlName="slope" class="input-glow mt-1 block w-full rounded-lg shadow-sm">
+              <option value="" disabled>Select</option>
+              <option value="0">Upsloping</option>
+              <option value="1">Flat</option>
+              <option value="2">Downsloping</option>
+            </select>
+            <span *ngIf="isInvalid('slope')" class="text-red-400 text-xs mt-1">Slope is required</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional Tests Section -->
+      <div class="pb-4">
+        <h3 class="text-lg font-semibold text-teal-200 mb-4">Additional Tests</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="numVessels" class="block text-sm font-medium text-teal-100">Number of Major Vessels (0-3)</label>
+            <select id="numVessels" formControlName="numVessels" class="input-glow mt-1 block w-full rounded-lg shadow-sm">
+              <option value="" disabled>Select</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+            <span *ngIf="isInvalid('numVessels')" class="text-red-400 text-xs mt-1">Number of Vessels is required</span>
+          </div>
+          <div>
+            <label for="thal" class="block text-sm font-medium text-teal-100">Thal</label>
+            <select id="thal" formControlName="thal" class="input-glow mt-1 block w-full rounded-lg shadow-sm">
+              <option value="" disabled>Select</option>
+              <option value="0">Normal</option>
+              <option value="1">Fixed Defect</option>
+              <option value="2">Reversable Defect</option>
+            </select>
+            <span *ngIf="isInvalid('thal')" class="text-red-400 text-xs mt-1">Thal is required</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Prediction Result -->
+      <div *ngIf="predictionResult" class="mt-6 text-center">
+        <p class="text-lg font-semibold text-white">
+          Prediction: <span [ngClass]="predictionClass">{{ predictionResult }}</span>
+        </p>
+      </div>
+
+      <!-- Predict Button -->
+      <button type="submit" class="predict-btn w-full text-white py-3 rounded-lg flex items-center justify-center">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        Predict Now
+      </button>
+    </form>
+  </div>
+</div>

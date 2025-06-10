@@ -1,0 +1,35 @@
+<div class="min-h-screen p-8">
+  <h2 class="text-2xl font-bold text-teal-600 mb-4">My Appointments</h2>
+  <div *ngIf="isLoading" class="flex items-center justify-center">
+    <p class="text-gray-600">Loading appointments...</p>
+  </div>
+  <div *ngIf="errorMessage && !isLoading" class="text-red-600">
+    {{ errorMessage }}
+  </div>
+  <div *ngIf="appointments.length === 0 && !isLoading && !errorMessage" class="text-gray-600">
+    No appointments available.
+  </div>
+  <div *ngIf="appointments.length > 0 && !isLoading && !errorMessage" class="overflow-x-auto">
+    <table class="w-full text-center border-collapse">
+      <thead>
+        <tr class="bg-teal-100">
+          <th class="px-4 py-2 text-gray-600">Time/Day</th>
+          <th class="px-4 py-2 text-gray-600">Sunday</th>
+          <th class="px-4 py-2 text-gray-600">Monday</th>
+          <th class="px-4 py-2 text-gray-600">Tuesday</th>
+          <th class="px-4 py-2 text-gray-600">Wednesday</th>
+          <th class="px-4 py-2 text-gray-600">Thursday</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let time of ['1:00PM', '2:00PM', '3:00PM', '4:00PM', '5:00PM', '6:00PM', '7:00PM', '8:00PM', '9:00PM', '10:00PM']">
+          <td class="px-4 py-2 border">{{ time }}</td>
+          <td *ngFor="let day of ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday']" class="px-4 py-2 border">
+            <span *ngIf="hasAppointment(day, time)">{{ getPatientName(day, time) }}</span>
+            <span *ngIf="!hasAppointment(day, time)">—</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

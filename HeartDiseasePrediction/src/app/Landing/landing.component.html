@@ -1,0 +1,28 @@
+<div class="relative h-screen bg-cover bg-center" style="background-image: url('./assets/images/LandingBackground.jpg');">
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+
+  <!-- Content -->
+  <div class="relative flex flex-col items-center justify-center h-full text-center text-white">
+    <h1 class="text-4xl font-bold md:text-6xl animate-fade-in">
+      Welcome to Heart Health Care
+    </h1>
+    <p class="mt-4 text-lg md:text-3xl animate-slide-up">
+      Predict your heart health risk and connect with specialists
+    </p>
+
+    <p class="GetStarted md:text-2xl font-bold text-lg-center font-medium">
+      Get Started As ?
+    </p>
+
+    <div class="mt-4 space-x-4">
+      <button (click)="onDoctorLoginClick()" routerLink="/doctor-login" class="bg-try2 px-md-5 py-3 md:text-2xl font-bold text-lg font-medium">
+        <span>Cardiologist</span>
+      </button>
+
+      <button (click)="onPatientLoginClick()" routerLink="/patient-login" class="bg-try px-4 py-3 md:text-2xl font-bold text-lg font-medium">
+        <span>Try Our Services</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+::after , ::before{
+  content: '';
+}
+.container{
+  width: 85%;
+  margin: auto;
+
+}
+
+.BlogMainHeading{
+  // margin-top: 20px;
+  position: relative;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bolder;
+  font-family:"Playfair Display", serif;
+
+  margin-bottom: 60px;
+  padding-top: 10px;
+}
+.BlogMainHeading::after ,
+.BlogMainHeading::before{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.BlogMainHeading::after{
+  content: '';
+
+  width: 160px;
+  height: 3xp;
+  border-top: 2px solid #ff305b;
+  border-bottom: 1px solid #ff305b;
+
+  bottom: -10px;
+}
+
+.BlogMainHeading::before{
+  height: 12px;
+  width: 100px;
+
+  border-top: 2px solid #ff305b;
+  border-bottom: 2px solid #ff305b;
+  bottom: -15px;
+}
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*--------------------------------------
+   06. Portfolio-area css hear
+---------------------------------------*/
+.portfolio-area {
+  padding-bottom: 10px;
+// background-color: #589899;
+ height: auto;
+ align-items: center;
+
+}
+// .backcground{
+//   position: absolute;
+//   margin-left: 900px;
+//   width: 40%;
+//   height: 80%;
+//   background: url('../../assets/images/BlogDoctor.png') no-repeat center center/cover;
+
+// }
+
+.portfolio-menu button {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: medium none;
+  color: #333333;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  padding: 3px 12px;
+  position: relative;
+  text-transform: uppercase;
+}
+.portfolio-menu button:focus{
+ outline: none;
+}
+.portfolio-menu button.active {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: medium none;
+  color: #ff305b;
+}
+.portfolio{
+  position: relative;
+
+}
+.portfolio a {
+  display: block;
+  position: relative;
+}
+.portfolio a:after {
+  background: #000000 none repeat scroll 0 0;
+  content: "";
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+  width: 100%;
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+.portfolio a:hover:after {
+  opacity: .5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  visibility: visible;
+}
+.portfolio-view {
+  display: inline-block;
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+  visibility: hidden;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+}
+
+.portfolio-view {
+  bottom: 15px;
+  color: #ff305b;
+  font-size: 20px;
+  position: absolute;
+  right: 15px;
+}
+
+.bm{
+  margin-top: 130px ;
+  margin-bottom: 50px;
+}
+
+
+.modal-content{
+  padding: 20px;
+}
+
+.bm2
+{
+margin-top: 270px;
+  margin-bottom: 40px;
+}
+
+.sec3{
+  overflow-y: hidden;
+}
+.row {
+ margin-left: 25px;
+}
+.card-title{
+ color: #ff305b;
+ font-family: "Roboto Condensed", serif;
+ font-weight: 700;
+ font-size:larger;
+}
+.modalTitle{
+  color: #ff305b;
+ font-family: "Roboto Condensed", serif;
+ font-weight: 1000;
+ font-size:larger;
+}
+
+.ulBlog{
+  margin-left: 20px;
+}
+
+.btnCard{
+  margin-left: 45px;
+}
+
