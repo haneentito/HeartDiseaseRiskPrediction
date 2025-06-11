@@ -1,5 +1,12 @@
 "# HeartDiseaseRiskPrediction" 
-## Project Files
 
-- [Presentation (PPTX)]https://docs.google.com/presentation/d/1L3MGa9YE81eSYz57MMTaPGTDvMo1pe0N/edit?usp=drive_link&ouid=109078628917959140151&rtpof=true&sd=true)
+
+
+## 📁 Project Files
+
+All project-related documents (presentation, report, video, etc.) are available in this Google Drive folder:
+
+👉 [Click here to access the folder](https://drive.google.com/drive/folders/163q6cQAT27FDA6uC3StBMdSscQOOqFYm?usp=drive_link)
+
+
 
