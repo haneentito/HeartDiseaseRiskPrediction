@@ -1,0 +1,40 @@
+<nav class="fixed top-0 left-0 w-full bg-teal-600 p-4 z-10 shadow-md">
+  <div class="flex items-center justify-between">
+    <!-- Logo -->
+    <div class="flex items-center">
+      <svg class="w-6 h-6 text-white mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+      </svg>
+      <a routerLink="/doctor-home" class="text-white text-lg font-bold">Heart Care</a>
+    </div>
+
+    <!-- Links -->
+    <ul class="flex space-x-6 text-white items-center">
+      <li><a routerLink="/doctor-home-profile" [routerLinkActive]="['text-yellow-300']" class="hover:underline">Profile</a></li>
+      <li><a routerLink="/doctor-home-appointments" [routerLinkActive]="['text-yellow-300']" class="hover:underline">My Appointments</a></li>
+      <li class="relative">
+        <button (click)="toggleNotifications($event)" class="hover:underline flex items-center">
+          <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+          </svg>
+          Alerts
+          <span *ngIf="notifications.length > 0" class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+            {{ notifications.length }}
+          </span>
+        </button>
+        <div *ngIf="showNotifications" class="absolute right-0 mt-2 w-64 bg-gray-900 text-white rounded-lg shadow-lg p-4 z-30" (click)="$event.stopPropagation()">
+          <h4 class="text-sm font-semibold mb-2">Notifications:</h4>
+          <div *ngIf="notifications.length === 0" class="text-sm">No Notifications Found ❌</div>
+          <div *ngFor="let notification of notifications" class="text-sm mb-2">
+            {{ notification.message }}
+            <div class="flex space-x-2 mt-1">
+              <button (click)="acceptAppointment(notification.appointment_id); $event.stopPropagation()" class="text-green-400 hover:underline">Confirm</button>
+              <button (click)="declineAppointment(notification.appointment_id); $event.stopPropagation()" class="text-red-400 hover:underline">Decline</button>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li><a href="#" (click)="logout(); $event.preventDefault()" class="hover:underline">Log Out</a></li>
+    </ul>
+  </div>
+</nav>

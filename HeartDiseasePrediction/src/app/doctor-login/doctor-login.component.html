@@ -1,0 +1,67 @@
+<div class="flex h-screen">
+  <!-- Left Section: Background Image -->
+  <div class="w-2/3 bg-cover bg-center" style="background-image: url('../../assets/images/LoginBackground.jpg');"></div>
+
+  <!-- Right Section: Login Container -->
+  <div class="w-1/2 flex flex-col justify-center items-center bg-[#a6d4d3] px-6 py-8 animate-fade-in">
+    <!-- Doctor Icon -->
+    <div class="flex justify-center items-center w-16 h-16 rounded-full bg-[#006D77] text-white text-3xl mb-8">
+      <i class="fas fa-user-md"></i>
+    </div>
+
+    <!-- Login Form -->
+    <h2 class="text-xl font-bold mb-6 text-center">Login To Your Account</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="w-full">
+      <!-- Doctor ID Input -->
+      <div class="w-full flex items-center mb-4">
+        <i class="fas fa-id-badge text-[#005a61] text-4xl ml-10"></i>
+        <input
+          type="text"
+          formControlName="doctorId"
+          placeholder="Enter your ID"
+          class="pinpuut w-75 bg-gray-100 py-3 px-4 focus:ring-2 focus:ring-[#006D77] focus:outline-none hover:bg-gray-200 transition"
+        />
+      </div>
+      <small *ngIf="getError('doctorId')" class="fpmargin text-danger font-bold">{{ getError('doctorId') }}</small>
+
+      <!-- Email Input -->
+      <div class="w-full flex items-center mb-4">
+        <i class="fa-solid fa-envelope fa-2x ml-10" style="color: #005a61;"></i>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="Enter your email"
+          class="pinpuut w-75 bg-gray-100 py-3 px-4 focus:ring-4 focus:ring-[#006D77] focus:outline-none hover:bg-gray-200 transition"
+        />
+      </div>
+      <small *ngIf="getError('email')" class="fpmargin text-danger font-bold">{{ getError('email') }}</small>
+
+      <!-- Password -->
+      <div class="w-full flex items-center mb-4">
+        <i class="fa-regular fa-eye-slash fa-2xl ml-10" style="color: #005a61;"></i>
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Enter your password"
+          class="pinpuut w-75 bg-gray-100 py-3 px-4 focus:ring-2 focus:ring-[#006D77] focus:outline-none hover:bg-gray-200 transition"
+        />
+      </div>
+      <small *ngIf="getError('password')" class="fpmargin text-danger font-bold">{{ getError('password') }}</small>
+      <br>
+
+      <!-- Forgot Password Link -->
+      <a [routerLink]="['/forget-password']" [queryParams]="{ userType: 'doctor' }" class="paddingloginpass text-[#a73939] font-bold mb-6 self-end hover:underline">Forget Password?</a>
+
+      <!-- Login Button -->
+      <button type="submit" class="padingloginbtn w-75 bg-[#006D77] text-white py-3 text-lg hover:bg-[#005f68] transition">
+        Login
+      </button>
+
+      <!-- Register -->
+      <p class="paddinglogin text-sm mt-4">
+        Don’t Have Account? <a class="text-[#a73939] font-bold hover:underline" routerLink="/doctor-registration">Register</a>
+      </p>
+    </form>
+  </div>
+</div>

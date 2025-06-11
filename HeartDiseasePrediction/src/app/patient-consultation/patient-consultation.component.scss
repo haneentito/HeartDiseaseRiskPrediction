@@ -1,0 +1,28 @@
+.consultation-container {
+  background: linear-gradient(135deg, #e6f7fa 0%, #f0f4f8 100%);
+  padding: 20px;
+}
+
+.doctor-card {
+  transition: all 0.3s ease;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: left;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  a {
+    display: inline-block;
+    margin-top: 10px;
+  }
+}
+
+/* Remove the misaligning margin */
+.heartDoctorAligns {
+  margin-left: 0;
+}

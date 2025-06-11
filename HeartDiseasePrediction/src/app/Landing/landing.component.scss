@@ -1,0 +1,85 @@
+h1 {
+  font-family: "Poppins", sans-serif;
+}
+p {
+  font-family: "Poppins", sans-serif;
+}
+button {
+  transition: all 0.3s ease;
+}
+.bg-try{
+  background-color: transparent;
+  color: white ;
+  border: 2px solid teal;
+  border-radius: 28px
+
+}
+
+.bg-try2{
+  background-color: teal;
+  color: white ;
+  border: 2px solid teal;
+  border-radius: 28px
+
+}
+.bg-try:hover{
+  background-color: white;
+  color: black;
+
+}
+.bg-try2:hover{
+  background-color: white;
+  color: black;
+}
+
+.GetStarted{
+  margin-top: 50px;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounce-up {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 1.5s ease-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 1.5s ease-out;
+}
+
+.animate-bounce-up {
+  animation: bounce-up 2s infinite;
+}
+
+
+p {
+  &.uppercase {
+    font-size: 0.875rem;
+    letter-spacing: 0.15em; 
+  }
+}
